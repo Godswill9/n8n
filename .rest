@@ -1,5 +1,5 @@
-POST https://n8n-vzs3.onrender.com/scrape
-# POST https://0849-102-89-45-19.ngrok-free.app/scrape
+# POST https://n8n-vzs3.onrender.com/scrape
+POST http://localhost:8082/scrape
 Content-Type: application/json
 
 {

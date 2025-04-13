@@ -38,7 +38,7 @@ app.get("/", (req, res) => {
 //   }
 // });
 
-app.post('/scrape', scraper.scrapeWebsite); // 👈 now it works properly
+app.get('/scrape', scraper.scrapeWebsite); // 👈 now it works properly
 
 
 // Set the port to listen on
