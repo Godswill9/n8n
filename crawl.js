@@ -139,9 +139,17 @@ const app = new FirecrawlApp({ apiKey });
 //   }
 // };
 
-
+const decodeAndFormatUrl = (formattedUrl) => {
+    // Decode the URL to handle encoded characters
+    let decodedUrl = decodeURIComponent(formattedUrl);
+  
+    // Remove unnecessary escape characters (e.g., `\`)
+    decodedUrl = decodedUrl.replace(/\\\[/g, '[').replace(/\\\]/g, ']').replace(/\\_/g, '_');
+  
+    return decodedUrl;
+  };
 const scrapeWebsite = async (req, res) => {
-    const urls = req.body.urls; // Array of URLs
+    const urls = req.body.url; // Array of URLs
     if (!Array.isArray(urls) || urls.length === 0) {
       return res.status(400).json({ error: 'Invalid or empty URLs array.' });
     }
@@ -151,11 +159,11 @@ const scrapeWebsite = async (req, res) => {
   
       // Loop through each URL and scrape data
       for (const url of urls) {
-        const scrapeResult = await app.scrapeUrl(url, { formats: ['markdown', 'html'] });
+        const scrapeResult = await app.scrapeUrl(decodeAndFormatUrl(url), { formats: ['markdown', 'html'] });
   
         if (!scrapeResult.success) {
-          console.error(`Failed to scrape URL: ${url}, Error: ${scrapeResult.error}`);
-          results.push({ link: url, houses: [] }); // Add an empty array for failed URLs
+          console.error(`Failed to scrape URL: ${decodeAndFormatUrl(url)}, Error: ${scrapeResult.error}`);
+          results.push({ link: decodeAndFormatUrl(url), houses: [] }); // Add an empty array for failed URLs
           continue; // Skip this URL if scraping fails
         }
   

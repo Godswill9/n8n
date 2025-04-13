@@ -1,9 +1,9 @@
-POST https://0849-102-89-45-19.ngrok-free.app/scrape
+POST https://n8n-vzs3.onrender.com/scrape
+# POST https://0849-102-89-45-19.ngrok-free.app/scrape
 Content-Type: application/json
 
 {
-  "urls": [
-    "https://www.funda.nl/zoeken/koop/?selected_area=[%22nijmegen%22]&object_type=[%22house%22]&availability=[%22available%22]&search_result=2&construction_period=[%22before_1906%22,%22from_1906_to_1930%22]",
-    "https://www.funda.nl/zoeken/koop/?selected_area=[%22nijmegen%22]&object_type=[%22house%22]&availability=[%22available%22]&search_result=1&construction_period=[%22before_1906%22,%22from_1906_to_1930%22]"
+  "url": [
+    "https://www.funda.nl/zoeken/koop/?selected_area=[%22nijmegen%22]&object_type=[%22house%22,%22apartment%22,%22land%22]&availability=[%22negotiations%22,%22available%22]&construction_type=[%22resale%22]&construction_period=[%22before_1906%22,%22from_1931_to_1944%22]&amenities=[%22central_heating_boiler%22]"
   ]
 }
