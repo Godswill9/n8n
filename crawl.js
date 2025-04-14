@@ -374,7 +374,7 @@ const app = new FirecrawlApp({ apiKey });
           : 0;
         const pricePerM2 = sizeValue ? (priceValue / sizeValue).toFixed(2) : 0;
   
-        return { address, price: price === null ? canceledPrice : price, bedrooms, status: status === null ? null : status, size, url, realtor, pricePerM2: ` € ${pricePerM2}` };
+        return { address, price: price === null ? canceledPrice : price, bedrooms, status: status === null ? "Beschikbaar" : status, size, url, realtor, pricePerM2: ` € ${pricePerM2}` };
       });
   
       return { link: decodedUrl, houses, html };
