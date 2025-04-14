@@ -420,11 +420,12 @@ const app = new FirecrawlApp({ apiKey });
       return res.json({ ...finalResult, totalItems: finalResult.houses.length }); // Return the extracted data as an object
     } catch (error) {
       console.error('Error during scraping:', error);
-      return res.status(500).json({
-        ...finalResult,
-        totalItems: finalResult.houses.length,
-        message: `An error occurred during scraping. ${ Math.ceil(Number(finalResult.houses.length) / 15)} pages scraped.`
-      });
+      res.json({ ...finalResult, message: `An error occurred during scraping. ${ Math.ceil(Number(finalResult.houses.length) / 15)} pages scraped.` });
+      // return res.json({
+      //   ...finalResult,
+      //   totalItems: finalResult.houses.length,
+      //   message: `An error occurred during scraping. ${ Math.ceil(Number(finalResult.houses.length) / 15)} pages scraped.`
+      // });
     }
   };
 
