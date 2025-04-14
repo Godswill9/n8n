@@ -38,6 +38,7 @@ app.get("/", (req, res) => {
 //   }
 // });
 
+// app.get('/scrape', scraper.scrapeWebsite); // 👈 now it works properly
 app.post('/scrape', scraper.scrapeWebsite); // 👈 now it works properly
 
 
