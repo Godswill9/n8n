@@ -4,7 +4,8 @@ const path = require('path');
 const FirecrawlApp = require('@mendable/firecrawl-js').default;
 
 // Load API key from environment variables
-const apiKey = process.env.FIRECRAWL_API_KEY || 'fc-a905412283064414a6f9ce87aa533cf7';
+const apiKey = process.env.FIRECRAWL_API_KEY || 'fc-fc9f3eb875c245dcadbab0eacf4591ad';
+// const apiKey = process.env.FIRECRAWL_API_KEY || 'fc-a905412283064414a6f9ce87aa533cf7';
 // const apiKey = process.env.FIRECRAWL_API_KEY || 'fc-aeb0f11ad777430f9254b5614d073c5c';
 if (!apiKey) {
   throw new Error('API key is missing. Set FIRECRAWL_API_KEY in your environment variables.');
@@ -300,14 +301,18 @@ const app = new FirecrawlApp({ apiKey });
   }
 
   const decodeAndFormatUrl = (formattedUrl) => {
-    // Decode the URL to handle encoded characters
-    let decodedUrl = decodeURIComponent(formattedUrl);
+    // First, remove escape characters like \[ and \]
+    let cleanedUrl = formattedUrl
+      .replace(/\\\[/g, '[')
+      .replace(/\\\]/g, ']')
+      .replace(/\\_/g, '_');
   
-    // Remove unnecessary escape characters (e.g., `\`)
-    decodedUrl = decodedUrl.replace(/\\\[/g, '[').replace(/\\\]/g, ']').replace(/\\_/g, '_');
+    // Then decode encoded characters like %22
+    let decodedUrl = decodeURIComponent(cleanedUrl);
   
     return decodedUrl;
   };
+  
 
   const scrapeWebsite = async (req, res) => {
     // const urls = [

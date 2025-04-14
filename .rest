@@ -5,6 +5,6 @@ Content-Type: application/json
 
 {
   "url": [
-    "https://www.funda.nl/zoeken/koop/?selected_area=[%22nijmegen%22]&object_type=[%22house%22,%22apartment%22,%22land%22]&availability=[%22negotiations%22,%22available%22]&search_result=4&construction_type=[%22resale%22]&construction_period=[%22before_1906%22,%22from_1931_to_1944%22]&amenities=[%22central_heating_boiler%22]"
+    "https://www.funda.nl/zoeken/koop/?selected_area=\[%22nijmegen%22]&object_type=[%22house%22]&availability=[%22unavailable%22]"
   ]
 }
