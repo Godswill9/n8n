@@ -404,7 +404,8 @@ const app = new FirecrawlApp({ apiKey });
             const totalHomesText = extractBetween(result.html, '? Op Funda vind je momenteel ', ' huizen te koop in');
             if (totalHomesText) {
               const totalItems = parseInt(totalHomesText.replace(/[^\d]/g, ''), 10);
-              maxPages = Math.ceil(totalItems / 15);
+              // maxPages = Math.ceil(totalItems / 15);
+              maxPages = Math.min(Math.ceil(totalItems / 15), 30);
               console.log(`📊 Total items: ${totalItems}, Estimated pages: ${maxPages}`);
             }
           }
