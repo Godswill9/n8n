@@ -5,6 +5,7 @@ const cors = require("cors");
 const app = express();
 const server = http.createServer(app);
 const scraper = require("./crawl");
+const access = require("./access");
 
 
 app.use(
@@ -29,6 +30,7 @@ app.get("/", (req, res) => {
 
  
 app.post('/scrape', scraper.scrapeWebsite); 
+app.post('/permission', access.makeEditable);
 
 
 // Set the port to listen on
