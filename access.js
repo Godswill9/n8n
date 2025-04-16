@@ -30,7 +30,7 @@ const makeEditable = async (req, res) => {
       fileId: spreadsheetId,
       fields: 'id',
     });
-
+console.log('Permission granted to link:', spreadsheetId);
     res.json({ message: 'Permission granted to anyone with the link', spreadsheetId });
   } catch (error) {
     console.error('Error setting permissions:', error);
