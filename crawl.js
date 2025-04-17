@@ -120,9 +120,13 @@ const app = new FirecrawlApp({ apiKey });
     // ];
 
     const urls = req.body.url
+    const maxPagesScraped= req.body.maxPagesScraped
     const allHtmlPages = [];
     if (!Array.isArray(urls) || urls.length === 0) {
       return res.status(400).json({ error: 'Invalid or empty URLs array.' });
+    }
+    if (!maxPagesScraped) {
+      return res.status(400).json({ error: 'Enter the number of pages to be scraped.' });
     }
   
     const finalResult = {
@@ -205,7 +209,7 @@ const app = new FirecrawlApp({ apiKey });
             if (totalHomesText) {
               const totalItems = parseInt(totalHomesText.replace(/[^\d]/g, ''), 10);
               // maxPages = Math.ceil(totalItems / 15);
-              maxPages = Math.min(Math.ceil(totalItems / 15), 30);
+              maxPages = Math.min(Math.ceil(totalItems / 15), Number(maxPagesScraped));
               console.log(`📊 Total items: ${totalItems}, Estimated pages: ${maxPages}`);
             }
           }
@@ -221,7 +225,8 @@ const app = new FirecrawlApp({ apiKey });
       return res.json({ ...finalResult, totalItems: finalResult.houses.length }); // Return the extracted data as an object
     } catch (error) {
       console.error('Error during scraping:', error);
-      res.json({ ...finalResult, message: `An error occurred during scraping. ${ Math.ceil(Number(finalResult.houses.length) / 15)} pages scraped.` });
+      return res.json({ ...finalResult, totalItems: finalResult.houses.length }); 
+      // res.json({ ...finalResult, message: `An error occurred during scraping. ${ Math.ceil(Number(finalResult.houses.length) / 15)} pages scraped.` });
     }
   };
   
