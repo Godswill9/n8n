@@ -210,7 +210,7 @@ const app = new FirecrawlApp({ apiKey });
               const totalItems = parseInt(totalHomesText.replace(/[^\d]/g, ''), 10);
               const allPages = Math.ceil(totalItems / 15);
               maxPages = Math.min(Math.ceil(totalItems / 15), Number(maxPagesScraped));
-              console.log(`📊 Total items: ${totalItems}, Estimated pages: ${allPages}`);
+              console.log(`📊 Total items: ${totalItems}, Estimated pages: ${allPages}, Pages required: ${maxPages}`);
             }
           }
   
