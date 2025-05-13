@@ -6,5 +6,6 @@ Content-Type: application/json
 
 {
   "url": "https://www.funda.nl/zoeken/koop?selected_area=[%22nijmegen%22]&publication_date=%2230%22&availability=[]",
-  "email": "ghycinth9@gmail.com"
+  "email": "ghycinth9@gmail.com",
+  "pages":10,
 }
